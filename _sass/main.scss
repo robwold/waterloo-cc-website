@@ -2,10 +2,6 @@
   width: 100vw;
 }
 
-.header-container {
-  margin-bottom: 16px;
-}
-
 .welcome-message {
   color: #FFF;
   position: absolute;
@@ -27,6 +23,7 @@
 
 .section {
   display: flex;
+  margin-top: 48px;
 }
 
 .section-question {
