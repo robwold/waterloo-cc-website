@@ -13,8 +13,12 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  font-size: 96px;
+  font-size: 108px;
   max-width: fit-content;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .content-wrapper {
@@ -28,8 +32,11 @@
 .section-question {
   color: #0b1263;
   font-size: 48px;
-  font-weight: bold;
   width: 40%;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .section-body {
