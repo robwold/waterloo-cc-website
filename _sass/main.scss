@@ -28,9 +28,10 @@
 }
 
 .section {
-  display: flex;
-  padding: 48px;
   border-bottom: 1px solid lightgray;
+  display: flex;
+  gap: 20px;
+  padding: 48px;
 }
 
 .section-question {
