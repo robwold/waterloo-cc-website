@@ -5,10 +5,37 @@ $cream: #F2F1E9;
 $dark-gold: #A68241;
 $gold: #D9B777;
 
+a {
+  text-decoration: none;
+}
+
 .header-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner-image {
   height: 300px;
+  margin: 35px;
+}
+
+.navbar {
+  background-color: $dark-blue;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  width: 100%;
+
+  a {
+    color: $gold;
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 32px;
+  }
+
 }
 
 @media (max-width: 1250px) {
@@ -48,7 +75,6 @@ $gold: #D9B777;
 
   a {
     color: $blue;
-    text-decoration: none;
   }
 }
 
