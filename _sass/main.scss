@@ -1,3 +1,10 @@
+
+$dark-blue: #0b1263;
+$blue: #1E35A0;
+$cream: #F2F1E9;
+$dark-gold: #A68241;
+$gold: #D9B777;
+
 .banner-image {
   width: 100vw;
 }
@@ -35,7 +42,7 @@
 }
 
 .section-question {
-  color: #0b1263;
+  color: $dark-blue;
   font-size: 48px;
   width: 40%;
   font-family: "Roboto", sans-serif;
@@ -51,6 +58,11 @@
   font-weight: 500;
   line-height: 1.5;
   padding: 8px;
+
+  a {
+    color: $blue;
+    text-decoration: none;
+  }
 }
 
 .google-maps {
