@@ -56,6 +56,7 @@ a {
   padding: 48px;
 }
 
+
 .section-question {
   color: $dark-blue;
   font-size: 40px;
@@ -76,6 +77,20 @@ a {
 
   a {
     color: $blue;
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    flex-direction: column;
+  }
+
+  .section-question {
+    width: 100%;
+  }
+
+  .section-body {
+    width: 100%;
   }
 }
 
