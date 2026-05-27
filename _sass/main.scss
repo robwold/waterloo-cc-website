@@ -83,6 +83,7 @@ a {
 @media (max-width: 900px) {
   .section {
     flex-direction: column;
+    padding: 24px 0;
   }
 
   .section-question {
@@ -90,6 +91,7 @@ a {
   }
 
   .section-body {
+    padding: 0px;
     width: 100%;
   }
 }
