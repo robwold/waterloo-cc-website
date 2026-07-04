@@ -5,19 +5,46 @@ $cream: #F2F1E9;
 $dark-gold: #A68241;
 $gold: #D9B777;
 
+// added tokens
+$line: #d9d6c4;
+$ink: #1a1d2e;
+$muted: #5a5f7a;
+
 a {
   text-decoration: none;
 }
 
+/* ───────── Header (shared across all pages) ───────── */
 .header-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(18, 13, 8, 0.82) 0%, rgba(24, 17, 10, 0.46) 54%, rgba(20, 14, 9, 0.8) 100%),
+    url("/assets/images/chessboard.jpg") center 56% / cover no-repeat;
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .banner-image {
   height: 200px;
   margin: 35px;
+}
+
+.tagline {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  color: $gold;
+  margin: -4px 0 22px;
+  letter-spacing: 0.01em;
+  text-align: center;
 }
 
 .navbar {
@@ -33,10 +60,24 @@ a {
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-
     font-size: 32px;
-  }
+    position: relative;
+    padding-bottom: 4px;
 
+    &:hover {
+      color: #fff;
+    }
+
+    &.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: $gold;
+    }
+  }
 }
 
 @media (max-width: 1250px) {
@@ -49,73 +90,332 @@ a {
   margin: 0 10vw;
 }
 
-.section {
-  border-bottom: 1px solid lightgray;
-  display: flex;
-  gap: 20px;
-  padding: 48px;
+/* ───────── Home page — card-hybrid layout ───────── */
+.home {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 8px 0 24px;
+
+  .section {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    gap: 44px;
+    align-items: stretch;
+    padding: 24px 48px;
+    border: none;
+
+    &:nth-child(even) {
+      grid-template-columns: 1fr 40%;
+
+      .qimg { order: 2; }
+    }
+  }
+
+  .qimg {
+    position: relative;
+    background: #e4e1d1;
+    min-height: 300px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    &.map { background: none; }
+    &.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    &.photo { background: none; }
+    &.logo { background: #fff; border: 1px solid #e7e4d5; }
+    &.logo img { object-fit: contain; padding: 12%; }
+  }
+
+  .qcol {
+    padding: 40px 44px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #e7e4d5;
+    box-shadow: 0 12px 30px -22px rgba(11, 18, 99, 0.35);
+  }
+
+  .section-question {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.1;
+    color: $dark-blue;
+    margin: 0 0 16px;
+    width: auto;
+  }
+
+  .section-body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: $ink;
+    width: auto;
+
+    p { margin: 0; }
+    a { color: $blue; }
+    ul { margin: 0; padding-left: 22px; }
+    li { margin: 6px 0; }
+  }
+
+  .section.feature .qcol {
+    background: $dark-blue;
+    border: none;
+    box-shadow: 0 16px 38px -20px rgba(11, 18, 99, 0.6);
+  }
+  .section.feature .section-question { color: $gold; }
+  .section.feature .section-body,
+  .section.feature .section-body li { color: $cream; }
+  .section.feature .section-body a {
+    color: $gold;
+    border-bottom: 1px solid rgba(217, 183, 119, 0.45);
+  }
 }
 
-
-.section-question {
-  color: $dark-blue;
-  font-size: 40px;
-  width: 40%;
-  font-family: "Open Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
+@media (max-width: 900px) {
+  .home .section,
+  .home .section:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 16px 0;
+  }
+  .home .section:nth-child(even) .qimg { order: 0; }
+  .home .qimg { min-height: 220px; }
+  .home .qcol { padding: 28px 24px; }
+  .home .section-question { font-size: 32px; }
+  .home .section-body { font-size: 19px; }
 }
 
-.section-body {
-  font-family: "Open Sans", sans-serif;
-  width: 60%;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.5;
-  padding: 8px;
+/* ───────── FAQ page — open editorial list ───────── */
+.faq-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 60px 0 80px;
 
   a {
     color: $blue;
   }
 }
 
-@media (max-width: 900px) {
-  .section {
-    flex-direction: column;
-    padding: 24px 0;
+.faq-head {
+  margin-bottom: 44px;
+}
+
+.faq-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 56px;
+  color: $dark-blue;
+  margin: 0 0 10px;
+  line-height: 1;
+}
+
+.faq-intro {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  color: $muted;
+  max-width: 56ch;
+  margin: 0;
+}
+
+.faq-draft {
+  display: inline-block;
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a6d2f;
+  background: rgba(217, 183, 119, 0.22);
+  border: 1px solid $gold;
+  padding: 3px 8px;
+  margin-left: 12px;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.faq-list {
+  .item {
+    padding: 34px 0;
+    border-top: 1px solid $line;
+
+    &:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
   }
 
-  .section-question {
-    width: 100%;
+  h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 34px;
+    color: $dark-blue;
+    margin: 0 0 14px;
   }
 
-  .section-body {
-    padding: 0px;
-    width: 100%;
+  .a {
+    max-width: 70ch;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    line-height: 1.68;
+    color: $ink;
+
+    p {
+      margin: 0 0 0.9em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
-.history {
-  text-align: justify;
+/* ───────── History page — open editorial list ───────── */
+.hist-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 0 84px;
+
+  a {
+    color: $blue;
+  }
+}
+
+.hist-head {
+  margin-bottom: 8px;
+}
+
+.hist-eyebrow {
   font-family: "Open Sans", sans-serif;
-  width: 75%;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.5;
-  margin: 30px auto;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $dark-gold;
+  margin: 0 0 16px;
+}
+
+.hist-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 56px;
+  color: $dark-blue;
+  margin: 0 0 20px;
+  line-height: 1.02;
+}
+
+.hist-lead {
+  font-family: "Open Sans", sans-serif;
+  font-size: 21px;
+  line-height: 1.6;
+  color: $ink;
+  max-width: 58ch;
+  margin: 0 0 44px;
+}
+
+.hist-list {
+  .item {
+    padding: 36px 0;
+    border-top: 1px solid $line;
+  }
+
+  .yr {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $dark-gold;
+    margin: 0 0 12px;
+  }
+
+  h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 34px;
+    color: $dark-blue;
+    margin: 0 0 14px;
+    line-height: 1.08;
+  }
+}
+
+.hist-body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
+  line-height: 1.68;
+  color: $ink;
+  max-width: 70ch;
 
   p {
-    margin: 20px;
+    margin: 0 0 0.9em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
+.pull {
+  margin: 26px 0 2px;
+  padding: 6px 0 6px 26px;
+  border-left: 3px solid $gold;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 1.32;
+  color: $dark-blue;
+  max-width: 32ch;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #7a7f96;
+  margin-top: 10px;
+  line-height: 1.45;
+}
+
+.hist-fig {
+  margin: 30px 0 6px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid $line;
+  }
+}
+
+.fig-portrait {
+  float: right;
+  width: 44%;
+  margin: 4px 0 20px 34px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid $line;
+  }
+}
+
+/* ───────── Home map embed ───────── */
 .google-maps {
-    margin-top: 32px;
-    position: relative;
-    padding-bottom: 75%; // This is the aspect ratio
-    height: 0;
-    overflow: hidden;
+  margin-top: 32px;
+  position: relative;
+  padding-bottom: 75%; // This is the aspect ratio
+  height: 0;
+  overflow: hidden;
 }
 
 .google-maps iframe {
@@ -126,3 +426,42 @@ a {
   height: 100% !important;
 }
 
+/* ───────── Small screens ───────── */
+@media (max-width: 640px) {
+  .banner-image {
+    height: 160px;
+    margin: 24px;
+  }
+
+  .tagline {
+    font-size: 18px;
+  }
+
+  .navbar a {
+    font-size: 24px;
+  }
+
+  .faq-title,
+  .hist-title {
+    font-size: 38px;
+  }
+
+  .faq-list h3,
+  .hist-list h3 {
+    font-size: 26px;
+  }
+
+  .hist-lead {
+    font-size: 19px;
+  }
+
+  .pull {
+    font-size: 21px;
+  }
+
+  .fig-portrait {
+    float: none;
+    width: 100%;
+    margin: 22px 0 8px;
+  }
+}
