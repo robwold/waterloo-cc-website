@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="/assets/css/styles.css">
     <title>Waterloo Chess Club</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Waterloo Chess Club is a friendly chess club near Liverpool, welcoming players of all abilities for casual and competitive games.{% endif %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -16,8 +17,8 @@
   </head>
   <body>
     {% include header.html %}
-    <div class="content-wrapper">
+    <main class="content-wrapper">
       {{ content }}
-    </div>
+    </main>
   </body>
 </html>
