@@ -36,17 +36,6 @@ a {
   margin: 35px;
 }
 
-.tagline {
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 22px;
-  color: $gold;
-  margin: -4px 0 22px;
-  letter-spacing: 0.01em;
-  text-align: center;
-}
-
 .navbar {
   background-color: $dark-blue;
   display: flex;
@@ -314,7 +303,6 @@ a {
   font-weight: 500;
   line-height: 1.6;
   color: $ink;
-  max-width: 58ch;
   margin: 0 0 44px;
 }
 
@@ -350,7 +338,7 @@ a {
   font-weight: 500;
   line-height: 1.68;
   color: $ink;
-  max-width: 70ch;
+  max-width: 100%;
 
   p {
     margin: 0 0 0.9em;
@@ -362,7 +350,7 @@ a {
 }
 
 .pull {
-  margin: 26px 0 2px;
+  margin: 20px 0 20px;
   padding: 6px 0 6px 26px;
   border-left: 3px solid $gold;
   font-family: "Open Sans", sans-serif;
